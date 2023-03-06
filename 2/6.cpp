@@ -1,60 +1,42 @@
 #include <iostream>
 #include <string>
 
-class StringView
-{
+class StringView {
     std::string *value;
+    size_t start, _size;
 
 public:
     StringView() = default;
 
-    explicit StringView(std::string &other)
-    {
-        value = &other;
-    }
-
-    StringView(const StringView &other)
-    {
-        value = other.value;
-    }
-
-    StringView(std::string &s, size_t begin = 0, size_t count = std::string::npos)
-    {
-        *value = {};
-        for (size_t i = 0; i < count; ++i) {
-            *value += s[i + begin];
-        }
+    StringView(std::string &s, size_t begin = 0, size_t count = std::string::npos) {
+        value = &s;
+        start = begin;
+        this->_size = count;
     }
 
     char &
-    operator[](size_t index) const
-    {
-        return (*value)[index];
+    operator[](size_t index) const {
+        return (*value)[start + index];
     }
 
-    StringView(const StringView &sv, size_t begin = 0, size_t count = std::string::npos)
-    {
-        *value = {};
-        for (size_t i = 0; i < count; ++i) {
-            *value += sv[i + begin];
-        }
+    StringView(const StringView &sv, size_t begin = 0, size_t count = std::string::npos) {
+        value = sv.value;
+        start = begin + sv.start;
+        this->_size = count;
     }
 
-    size_t
-    size()
-    {
-        return value->size();
+    [[nodiscard]] size_t
+    size() const {
+        return _size;
     }
 
-    size_t
-    length()
-    {
-        return value->size();
+    [[nodiscard]] size_t
+    length() const {
+        return _size;
     }
 
     [[nodiscard]] std::string
-    str(size_t begin = 0, size_t count = std::string::npos) const
-    {
+    str(size_t begin = 0, size_t count = std::string::npos) const {
         std::string res{};
         for (size_t i = 0; i < count; ++i) {
             res += (*value)[begin + i];
@@ -62,21 +44,28 @@ public:
         return res;
     }
 
-    auto
-    operator<=>(const StringView &other)
-    {
-        return *value <=> *(other.value);
+    friend auto
+    operator<=>(const StringView &left, const StringView &right) {
+        return std::string(left.value->c_str() + left.start) <=> std::string(right.value->c_str() + right.start);
     }
 
-    auto
-    begin()
-    {
+    friend auto
+    operator==(const StringView &left, const StringView &right) {
+        return std::string(left.value->c_str() + left.start) == std::string(right.value->c_str() + right.start);
+    }
+
+    [[nodiscard]] auto
+    begin() const {
         return value->begin();
     }
 
-    auto
-    end()
-    {
+    [[nodiscard]] auto
+    end() const {
         return value->end();
+    }
+
+    [[nodiscard]] char &
+    at(size_t index) const {
+        return value->at(index);
     }
 };
