@@ -125,7 +125,7 @@ public:
         }
     };
 
-    class const_iterator : iterator {
+    class const_iterator : protected iterator {
     public:
         const_iterator(char *ptr) : iterator(ptr) {}
 
@@ -146,7 +146,7 @@ public:
         using iterator::operator==;
     };
 
-    class reverse_iterator : iterator {
+    class reverse_iterator : protected iterator {
     public:
         reverse_iterator(char *ptr) : iterator(ptr) {}
 
@@ -191,7 +191,7 @@ public:
         }
     };
 
-    class const_reverse_iterator : reverse_iterator, const_iterator {
+    class const_reverse_iterator : protected reverse_iterator, protected const_iterator {
     public:
         const_reverse_iterator(char *iter) : reverse_iterator(iter), const_iterator(iter) {}
 
