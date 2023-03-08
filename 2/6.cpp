@@ -257,12 +257,3 @@ public:
         return {value};
     }
 };
-
-
-int main() {
-    std::string str = "abcdef";
-    StringView sv(str);
-    for (auto elem = sv.rbegin(); elem != sv.rend(); ++elem) {
-        std::cout << elem;
-    }
-}
