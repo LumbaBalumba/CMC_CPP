@@ -1,6 +1,5 @@
-#include "1.cpp"
-#include "2.cpp"
 #include <vector>
+#include <iostream>
 
 namespace numbers
 {
@@ -12,25 +11,41 @@ namespace numbers
             if (arg == "z") {
                 stack = stack << z;
             } else if (arg == "+") {
-                complex a = (~stack, +stack), b = (~stack, +stack);
+                complex a = +stack;
+                stack = ~stack;
+                complex b = +stack;
+                stack = ~stack;
                 stack = stack << (a + b);
             } else if (arg == "-") {
-                complex a = (~stack, +stack), b = (~stack, +stack);
+                complex a = +stack;
+                stack = ~stack;
+                complex b = +stack;
+                stack = ~stack;
                 stack = stack << (b - a);
             } else if (arg == "*") {
-                complex a = (~stack, +stack), b = (~stack, +stack);
+                complex a = +stack;
+                stack = ~stack;
+                complex b = +stack;
+                stack = ~stack;
                 stack = stack << b * a;
             } else if (arg == "/") {
-                complex a = (~stack, +stack), b = (~stack, +stack);
+                complex a = +stack;
+                stack = ~stack;
+                complex b = +stack;
+                stack = ~stack;
                 stack = stack << (b / a);
             } else if (arg == "!") {
                 stack = stack << +stack;
             } else if (arg == ";") {
                 stack = ~stack;
             } else if (arg == "#") {
-                stack = stack << (~stack, - +stack);
+                complex a = - +stack;
+                stack = ~stack;
+                stack = stack << a;
             } else if (arg == "~") {
-                stack = stack << (~stack, ~+stack);
+                complex a = ~+stack;
+                stack = ~stack;
+                stack = stack << a;
             } else {
                 stack = stack << complex(arg);
             }
