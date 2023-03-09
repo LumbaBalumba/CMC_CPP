@@ -9,7 +9,7 @@ int
 main(int argc, char **argv)
 {
     numbers::complex C(argv[1]);
-    double R = strtod(argv[2], nullptr);
+    double R = fabs(strtod(argv[2], nullptr));
     int N = (int) strtol(argv[3], nullptr, 10);
     std::vector<std::string> func = {};
     for (int i = 4; i < argc; ++i) {
