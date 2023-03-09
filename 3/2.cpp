@@ -1,8 +1,4 @@
 #include <cmath>
-#include <iostream>
-#include <complex>
-
-typedef std::complex<double> complex;
 
 namespace numbers
 {
