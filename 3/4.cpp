@@ -19,8 +19,9 @@ main(int argc, char **argv)
     numbers::complex sum = 0;
     const double alpha = 2 * std::numbers::pi / N;
     for (int i = 0; i < N; ++i) {
-        numbers::complex z = C + R * numbers::complex(cos(alpha * i), sin(alpha * i));
-        sum += numbers::eval(func, z) * R * alpha;
+        double arg = alpha * i + alpha / 2, arg1 = alpha * i, arg2 = alpha * i + alpha;
+        numbers::complex z = C + R * numbers::complex(cos(arg), sin(arg));
+        sum += numbers::eval(func, z) * R * numbers::complex(cos(arg2) - cos(arg1), sin(arg2) - sin(arg1));
     }
     std::cout << sum.to_string() << std::endl;
 }
