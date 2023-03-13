@@ -23,3 +23,5 @@ add_executable(3-1 3/1.cpp)
 add_executable(3-2 3/1.cpp 3/2.cpp)
 add_executable(3-3 3/1.cpp 3/2.cpp 3/3.cpp)
 add_executable(3-4 3/1.cpp 3/2.cpp 3/3.cpp 3/4.cpp)
+
+add_executable(tmp tmp/main.cpp)

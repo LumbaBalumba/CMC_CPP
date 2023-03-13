@@ -22,8 +22,10 @@ namespace numbers
             }
         }
 
-        complex_stack(complex_stack &&other) noexcept: _arr(other._arr), _cap(other._cap), _size(other._size)
+        complex_stack(complex_stack &&other) noexcept: _cap(other._cap), _size(other._size)
         {
+            free(_arr);
+            _arr = other._arr;
             other._arr = nullptr;
         }
 
