@@ -13,11 +13,12 @@ main()
     } while (a != 0);
     for (ssize_t cmd1, cmd2; std::cin >> cmd1;) {
         if (cmd1 < 0) {
-            if ((size_t) -cmd1 > l.size()) {
+            cmd1 *= -1;
+            if ((size_t) cmd1 > l.size()) {
                 continue;
             }
             auto it = l.begin();
-            for (size_t i = 0; i < (size_t) -cmd1 - 1; ++i, ++it) {}
+            for (size_t i = 0; i < (size_t) cmd1 - 1; ++i, ++it) {}
             l.erase(it);
         } else {
             std::cin >> cmd2;
