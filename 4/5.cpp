@@ -18,13 +18,13 @@ main()
                 continue;
             }
             auto it = l.begin();
-            for (size_t i = 0; i < (size_t) cmd1 - 1; ++i, ++it) {}
+            for (size_t i = 0; i < (size_t) cmd1 - 1; ++i, ++it);
             l.erase(it);
         } else {
             std::cin >> cmd2;
             if ((size_t) cmd1 <= l.size()) {
                 auto it = l.begin();
-                for (size_t i = 0; i < (size_t) cmd1 - 1; ++i, ++it) {}
+                for (size_t i = 0; i < (size_t) cmd1 - 1; ++i, ++it);
                 l.insert(it, cmd2);
             } else {
                 l.push_back(cmd2);
