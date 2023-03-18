@@ -7,10 +7,10 @@ main()
     std::list<unsigned> l;
     unsigned a;
     std::cin >> a;
-    do {
+    while (a != 0) {
         l.push_back(a);
         std::cin >> a;
-    } while (a != 0);
+    }
     for (ssize_t cmd1, cmd2; std::cin >> cmd1;) {
         if (cmd1 < 0) {
             cmd1 *= -1;
