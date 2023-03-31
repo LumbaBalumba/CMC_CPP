@@ -1,7 +1,7 @@
 project(contest2)
 CMAKE_MINIMUM_REQUIRED(VERSION 3.9)
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_FLAGS "-O2 -Wall -Werror -fsanitize=leak -fsanitize=undefined -fsanitize=address")
+set(CMAKE_CXX_FLAGS "-O2 -Wall -Werror -g -fsanitize=leak -fsanitize=undefined -fsanitize=address")
 
 
 add_executable(1-1 1/1.cpp)
