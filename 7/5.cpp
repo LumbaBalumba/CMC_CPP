@@ -14,7 +14,7 @@ class Rectangle : public Figure
 {
     int a, b;
 public:
-    Rectangle(int a = 0, int b = 0) : a(a), b(b)
+    explicit Rectangle(int a = 0, int b = 0) : a(a), b(b)
     {}
 
     bool
