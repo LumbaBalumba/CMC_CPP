@@ -9,7 +9,7 @@ class BinaryNumber
 public:
     BinaryNumber(const string &s);
 
-    operator string() const;
+    explicit operator string() const;
 
     const BinaryNumber &
     operator++();
