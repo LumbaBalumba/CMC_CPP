@@ -47,3 +47,10 @@ add_executable(7-2 7/2.cpp)
 add_executable(7-3 7/3.cpp)
 add_executable(7-4 7/4.cpp)
 add_executable(7-5 7/5.cpp)
+
+
+add_executable(8-1 8/1.cpp)
+add_executable(8-2 8/2.cpp)
+add_executable(8-3 8/3.cpp)
+add_executable(8-4 8/4.cpp)
+add_executable(8-5 8/5.cpp)
