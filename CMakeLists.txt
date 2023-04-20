@@ -54,3 +54,10 @@ add_executable(8-2 8/2.cpp)
 add_executable(8-3 8/3.cpp)
 add_executable(8-4 8/4.cpp)
 add_executable(8-5 8/5.cpp)
+
+
+add_executable(9-1 9/1.cpp)
+add_executable(9-2 9/2.cpp)
+add_executable(9-3 9/3.cpp)
+add_executable(9-4 9/4.cpp)
+add_executable(9-5 9/5.cpp)
