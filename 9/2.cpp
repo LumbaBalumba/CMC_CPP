@@ -1,54 +1,81 @@
+#include <cinttypes>
+#include <cstdio>
 #include <iostream>
 #include <string>
-
-std::string
-str_mul(const std::string &str, size_t k)
-{
-    std::string res;
-    for (size_t i = 0; i < k; ++i) {
-        res += str;
-    }
-    return res;
-}
 
 int
 main()
 {
-    std::string str;
-    while (std::cin >> str) {
-        std::string pattern;
-        bool flag = false;
-        bool works = true;
-        size_t cnt0 = 0, cnt1 = 0;
-        for (auto c: str) {
-            if (c != '0' && c != '1') {
-                //pattern = "1";
-                works = false;
-                break;
+    std::cin.tie(nullptr);
+    int64_t pattern_cnt0, pattern_cnt1, cnt0, cnt1;
+    char c;
+    bool flag = false;
+    while ((c = getchar()) != EOF) {
+        if (c == '0') {
+            pattern_cnt0 = 1;
+            pattern_cnt1 = 0;
+            flag = true;
+
+            while ((c = getchar()) && c == '0') {
+                pattern_cnt0++;
             }
-            if (!flag) {
-                if (c == '0') {
-                    pattern += c;
-                    cnt0++;
+
+            if (c == '1') {
+                pattern_cnt1++;
+            } else {
+                flag = false;
+            }
+            if (flag) {
+                while ((c = getchar()) && c == '1') {
+                    pattern_cnt1++;
+                }
+
+                while (c == '0') {
+                    cnt0 = pattern_cnt0 - 1;
+                    cnt1 = pattern_cnt1;
+
+                    while ((c = getchar()) && c == '0') {
+                        cnt0--;
+                    }
+
+                    if (c != '1') {
+                        flag = false;
+                        break;
+                    } else {
+                        cnt1--;
+                    }
+
+                    while ((c = getchar()) && c == '1') {
+                        cnt1--;
+                    }
+
+                    if (cnt0 || cnt1) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+
+            if (flag) {
+                if (c == ' ' || c == '\n' || c == EOF) {
+                    std::cout << 1 << std::endl;
                 } else {
-                    flag = true;
-                    pattern += c;
-                    cnt1++;
+                    std::cout << 0 << std::endl;
+                    while (c != ' ' && c != '\n' && c != EOF) {
+                        c = getchar();
+                    }
                 }
             } else {
-                if (c == '1') {
-                    pattern += c;
-                    cnt1++;
-                } else {
-                    break;
+                std::cout << 0 << std::endl;
+                while (c != ' ' && c != '\n' && c != EOF) {
+                    c = getchar();
                 }
             }
-        }
-        if (!works || cnt1 == 0 || cnt0 == 0 || pattern.empty() || str.size() % pattern.size() ||
-            str_mul(pattern, str.size() / pattern.size()) != str) {
+        } else if (c != ' ' && c != '\n' && c != EOF) {
             std::cout << 0 << std::endl;
-        } else {
-            std::cout << 1 << std::endl;
+            while (c != ' ' && c != '\n' && c != EOF) {
+                c = getchar();
+            }
         }
     }
 }
