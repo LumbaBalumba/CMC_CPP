@@ -61,3 +61,10 @@ add_executable(9-2 9/2.cpp)
 add_executable(9-3 9/3.cpp)
 add_executable(9-4 9/4.cpp)
 add_executable(9-5 9/5.cpp)
+
+
+add_executable(10-1 10/1.cpp)
+add_executable(10-2 10/2.cpp)
+add_executable(10-3 10/3.cpp)
+add_executable(10-4 10/4.cpp)
+add_executable(10-5 10/5.cpp)
